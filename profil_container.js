@@ -7,20 +7,15 @@ var profileThree = ["Monica", "kvinne", 30, "woman3.jpg", "Liker √• lage mat, v√
 var profileFour = ["Nick", "mann", 22, "man3.jpg", "Vet ikke jeg assa"];
 var profileFive = ["Steve", "mann", 32, "man1.jpg", "Good Guy"];
 
-
 /*ALL PROFILES*/
 var allProfiles = [profileZero, profileOne, profileTwo, profileThree, profileFour, profileFive];
 
 
-/*PRINT PROFILE FUNCTION*/
-function PrintProfile(name)
-{
+/*PRINT PROFILE FUNCTION, where name is the var used for innerHTML*/
+function PrintProfile(name){
     name.innerHTML +=
-    `
-        <div class="profile">
+        `<div class="profile">
             <img src="images/${allProfiles[i][3]}" width="100%">
             <p>${allProfiles[i][0]} <br> ${allProfiles[i][2]}, ${allProfiles[i][4]}</p>
-        </div>
-    `
-    
+        </div>`
 }

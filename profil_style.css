@@ -1,0 +1,16 @@
+#alle_profiler{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#chosen_profile{
+    display: flex;
+    flex-wrap: wrap;
+}
+        
+.profile{
+    border: 5px solid black;
+    padding: 10px;
+    width: 33%
+}
+

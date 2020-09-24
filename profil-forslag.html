@@ -31,7 +31,7 @@
 			</section>
 			
 			<section>
-                
+                <div id=no_profile_found></div>
 				<!-- Skriv ut en profil her -->
                 <div id="chosen_profile">
                 
@@ -52,6 +52,7 @@
         
         /*HTML ELEMENTS*/
         var chosenProfile = document.getElementById("chosen_profile")
+        var noProfileFound = document.getElementById("no_profile_found")
         
         /*input fields*/
         var ageSelection = document.getElementById("age_selection");
@@ -68,13 +69,46 @@
         
         /*SHOWING PROFILES*/
         function showProfiles(){
+            
+            /*VARIABLES*/
+            var inputAge = (parseInt(ageSelection.value));
+            var inputGender = genderSelection.value.toLowerCase();
+            
+            
+            /*resetting search when clicking "vis forslag"*/ 
+            chosenProfile.innerHTML = ""
 
+            /*adding profiles matching search*/
             for (i=0; i<allProfiles.length; i++){
-                if (parseInt(ageSelection.value) === allProfiles[i][2] && genderSelection.value === allProfiles[i][1]){
-                    PrintProfile(chosenProfile)
-                }
                 
+                /*Variables*/
+                var profileAge = allProfiles[i][2];
+                var profileGender = allProfiles[i][1];
+                
+                if (inputAge === profileAge && inputGender === profileGender){
+                    PrintProfile(chosenProfile);
+                }
             }
+            if (chosenProfile.innerHTML === ""){
+                
+                noProfileFound.innerHTML = "INGEN TREFF. HVA MED EN AV DISSE?"
+                
+                for (i=0; i<allProfiles.length; i++){
+                    
+                    /*Variables*/
+                    var profileAge = allProfiles[i][2];
+                    var profileGender = allProfiles[i][1];
+                    
+                    var isRightGender = inputGender === profileGender
+                    var ageDiff = Math.abs(inputAge - profileAge)
+                    var isRightAge = ageDiff <= 5 
+                    
+                    if (isRightGender && isRightAge){
+                        PrintProfile(chosenProfile);
+                    }
+                }
+            }
+
         }
     </script>
 	
