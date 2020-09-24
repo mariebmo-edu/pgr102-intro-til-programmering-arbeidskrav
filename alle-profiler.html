@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FindYourLove</title>
+    
+    <style>
+        #alle_profiler{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .profile{
+            border: 5px solid black;
+            padding: 10px;
+            width: 33%
+        }
+    
+    </style>
+</head>
+<body>
+
+	<div>
+		
+		<header>
+			<h1>FindYourLove - Alle profiler</h1>
+		</header>
+		
+		<nav>
+			<ul>
+				<li><a href="alle-profiler.html">Alle profiler</a></li>
+				<li><a href="dagens-profil.html">Dagens profil</a></li>
+			</ul>
+		</nav>
+		
+	</div>
+    
+    <div id="alle_profiler">
+    
+    </div>
+    
+    <!-- Script containing all profiles-->
+    <script src="profil_container.js"> </script>
+    
+    
+    <script>
+    
+        /*HTML OBJECTS*/
+        
+    var profilePreview = document.getElementById("alle_profiler");
+            
+    
+    /*PRINTING EACH PROFILE WITH IMG, NAME, AGE, DESCRIPTION*/
+        
+    for (i=0; i<allProfiles.length; i++){
+                PrintProfile(profilePreview)
+        }
+    
+    </script>
+	
+</body>
+</html>
