@@ -1,21 +1,59 @@
-/*PROFILES*/
-/*Name, Gender, Age, Image, Description*/
-var profileZero = ["Karen", "kvinne", 42, "woman2.jpg", "essensielle oljer og frihet"];
-var profileOne = ["Amanda", "kvinne", 21, "woman1.jpg", "Liker turer i solnedgangen"];
-var profileTwo = ["Bjarne", "mann", 26, "man2.jpg", "Guttastemning er den eneste stemningen"];
-var profileThree = ["Monica", "kvinne", 30, "woman3.jpg", "Liker å lage mat, være med venner, og drikke kaffe"];
-var profileFour = ["Nick", "mann", 22, "man3.jpg", "Vet ikke jeg assa"];
-var profileFive = ["Steve", "mann", 32, "man1.jpg", "Good Guy"];
+/*DICTIONARY OF PROFILES*/
 
-/*ALL PROFILES*/
-var allProfiles = [profileZero, profileOne, profileTwo, profileThree, profileFour, profileFive];
+
+var allProfiles = [
+    
+    {
+        name: "Karen",
+        gender: "kvinne",
+        age: 42,
+        picture: "woman2.jpg",
+        description: "liker essensielle oljer og frihet"
+    },
+    {
+        name: "Amanda",
+        gender: "kvinne",
+        age: 21,
+        picture: "woman1.jpg",
+        description: "liker turer i solnedgangen"
+    },
+    {
+        name: "Bjarne",
+        gender: "mann",
+        age: 26,
+        picture: "man2.jpg",
+        description: "guttastemning er den eneste stemningen"
+    },
+    {
+        name: "Monica",
+        gender: "kvinne",
+        age: 30,
+        picture: "woman3.jpg",
+        description: "likr å lage mat, være med venner, og drikke kaffe"
+    },
+    {
+        name: "Nick",
+        gender: "mann",
+        age: 22,
+        picture: "man3.jpg",
+        description: "vet ikke jeg assa"
+    },
+    {
+        name: "Steve",
+        gender: "mann",
+        age: 32,
+        picture: "man1.jpg",
+        description: "good guy"
+    }
+    
+]
 
 
 /*PRINT PROFILE FUNCTION, where name is the var used for innerHTML*/
 function PrintProfile(name){
     name.innerHTML +=
         `<div class="profile">
-            <img src="images/${allProfiles[i][3]}" width="100%">
-            <p>${allProfiles[i][0]} <br> ${allProfiles[i][2]}, ${allProfiles[i][4]}</p>
+            <img src="images/${allProfiles[i].picture}" width="100%">
+            <p>${allProfiles[i].name} <br> ${allProfiles[i].age}, ${allProfiles[i].description}</p>
         </div>`
 }

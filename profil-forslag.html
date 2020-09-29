@@ -82,13 +82,15 @@
             for (i=0; i<allProfiles.length; i++){
                 
                 /*Variables*/
-                var profileAge = allProfiles[i][2];
-                var profileGender = allProfiles[i][1];
+                var profileAge = allProfiles[i].age;
+                var profileGender = allProfiles[i].gender;
                 
                 if (inputAge === profileAge && inputGender === profileGender){
                     PrintProfile(chosenProfile);
                 }
             }
+            
+            /*IF THERE'S NO MATCHES, GIVE SUGGESTIONS*/
             if (chosenProfile.innerHTML === ""){
                 
                 noProfileFound.innerHTML = "INGEN TREFF. HVA MED EN AV DISSE?"
@@ -96,13 +98,14 @@
                 for (i=0; i<allProfiles.length; i++){
                     
                     /*Variables*/
-                    var profileAge = allProfiles[i][2];
-                    var profileGender = allProfiles[i][1];
+                    var profileAge = allProfiles[i].age;
+                    var profileGender = allProfiles[i].gender;
                     
                     var isRightGender = inputGender === profileGender
                     var ageDiff = Math.abs(inputAge - profileAge)
                     var isRightAge = ageDiff <= 5 
                     
+                    /*SHOWS SAME GENDER AND AGES IN A +-5 YEAR RANGE FROM WANTED AGE*/ 
                     if (isRightGender && isRightAge){
                         PrintProfile(chosenProfile);
                     }

@@ -2,9 +2,102 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>SNAP</title>
+	<title>ØVINGS!</title>
+    <link rel="stylesheet" href="profil_style.css">
 </head>
 <body>
+
+	<div>
+		
+		<header>
+			<h1>FindYourLove - Alle profiler</h1>
+		</header>
+		
+		<nav>
+			<ul>
+				<li><a href="valgfri-funksjonalitet.html">Øv deg på første date</a></li>
+				<li><a href="profil-forslag.html">Profilsøk</a></li>
+			</ul>
+		</nav>
+		
+	</div>
+    
+    <div id="chat_window">
+        <div id="chat"></div>
+        <div id="questions">
+        <input type="button" value="hallo" id="button_1" class="chat_button">
+        <input type="button" value="hallo" id="button_2" class="chat_button">
+        <input type="button" value="hallo" id="button_3" class="chat_button">
+        
+        
+        </div>
+    
+    </div>
+    
+    <!-- Script containing all profiles-->
+    <script src="chat_container.js"> </script>
+    
+    
+    <script>
+    
+        /*BUTTONS*/
+        var b1 = document.getElementById("button_1");
+        var b2 = document.getElementById("button_2");
+        var b3 = document.getElementById("button_3");
+        
+        /*HTML OBJECTS*/
+        var chatWindow = document.getElementById("chat")
+        
+        
+        /*ASK QUESTIONS*/
+        
+        var a;
+        var b;
+        var c;
+        randomizeQuestions();
+        
+        
+        function randomizeQuestions(){
+            
+            var setList = new Set()
+            
+            while (setList.size <3){
+                
+                setList.add(randomNumberGen())
+            }
+            
+            [a, b, c] = setList;
+            
+            console.log(a)
+            b1.value = chat[a].q;
+            console.log(b)
+            b2.value = chat[b].q;
+            console.log(c)
+            b3.value = chat[c].q;
+            
+        }
+        
+        function randomNumberGen(){ 
+            return Math.floor(Math.random()*chat.length)
+        }
+        
+        
+        /*Question being asked from chat.js, connected answer is pasted*/
+        function askQuestion(inputnr){
+            chatWindow.innerHTML += `<div class="r">${chat[inputnr].q}</div>`
+            chatWindow.innerHTML += `<div class="l">${chat[inputnr].a}</div><br>`
+            randomizeQuestions();
+        }
+        
+        /*On click functionality*/
+        b1.onclick =()=> askQuestion(a);
+        b2.onclick =()=> askQuestion(b);
+        b3.onclick =()=> askQuestion(c);
+        
+        
+            
+    
+    </script>
 	
 </body>
 </html>
