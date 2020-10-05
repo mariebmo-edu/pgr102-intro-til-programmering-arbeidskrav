@@ -16,7 +16,7 @@
 		<nav>
 			<ul>
 				<li><a href="alle-profiler.html">Alle profiler</a></li>
-				<li><a href="dagens-profil.html">Dagens profil</a></li>
+				<li><a href="valgfri-funksjonalitet.html">Øv deg på første date</a></li>
 			</ul>
 		</nav>
 		
@@ -25,9 +25,16 @@
 			<section>
 				<label>Tast inn ønsket alder</label>
 				<input type="text" id="age_selection"><br>
-				<label>Mann eller kvinne?</label>
-				<input type="text" id="gender_selection">
-				<input type="button" value="Vis forslag" id="vis_forslag">
+                
+				<label>Velg kjønn</label>
+				<input type="checkbox" id="male" name="gender" value="mann">
+                <label for="male">Mann</label>
+                <input type="checkbox" id="female" name="gender" value="kvinne">
+                <label for="female">Kvinne</label>
+                <input type="checkbox" id="other" name="gender" value="annet">
+                <label for="other">Annet</label>
+                
+                <input type="button" value="submit" id="submit">
 			</section>
 			
 			<section>
@@ -52,14 +59,18 @@
         
         /*HTML ELEMENTS*/
         var chosenProfile = document.getElementById("chosen_profile")
-        var noProfileFound = document.getElementById("no_profile_found")
         
         /*input fields*/
         var ageSelection = document.getElementById("age_selection");
-        var genderSelection = document.getElementById("gender_selection");
+        var femaleCheck = document.getElementById("female");
+        var maleCheck = document.getElementById("male");
+        var otherCheck = document.getElementById("other");
+        
+        /*Checkbox-array*/
+        var checkBoxes = [femaleCheck, maleCheck, otherCheck];
         
         /*button*/
-        var submitButton = document.getElementById("vis_forslag")
+        var submitButton = document.getElementById("submit")
         
         
         
@@ -72,46 +83,27 @@
             
             /*VARIABLES*/
             var inputAge = (parseInt(ageSelection.value));
-            var inputGender = genderSelection.value.toLowerCase();
-            
             
             /*resetting search when clicking "vis forslag"*/ 
             chosenProfile.innerHTML = ""
-
-            /*adding profiles matching search*/
-            for (i=0; i<allProfiles.length; i++){
-                
-                /*Variables*/
-                var profileAge = allProfiles[i].age;
-                var profileGender = allProfiles[i].gender;
-                
-                if (inputAge === profileAge && inputGender === profileGender){
-                    PrintProfile(chosenProfile);
-                }
-            }
             
-            /*IF THERE'S NO MATCHES, GIVE SUGGESTIONS*/
-            if (chosenProfile.innerHTML === ""){
+            /*a er variablen som brukes for å lagre plassen i checkbox-loopen*/
+            for(a=0; a<checkBoxes.length; a++){
                 
-                noProfileFound.innerHTML = "INGEN TREFF. HVA MED EN AV DISSE?"
-                
-                for (i=0; i<allProfiles.length; i++){
+                if (checkBoxes[a].checked){
                     
-                    /*Variables*/
-                    var profileAge = allProfiles[i].age;
-                    var profileGender = allProfiles[i].gender;
-                    
-                    var isRightGender = inputGender === profileGender
-                    var ageDiff = Math.abs(inputAge - profileAge)
-                    var isRightAge = ageDiff <= 5 
-                    
-                    /*SHOWS SAME GENDER AND AGES IN A +-5 YEAR RANGE FROM WANTED AGE*/ 
-                    if (isRightGender && isRightAge){
-                        PrintProfile(chosenProfile);
-                    }
-                }
-            }
-
+                    for(i=0; i<allProfiles.length; i++){
+                        if (checkBoxes[a].value === allProfiles[i].gender && inputAge >= 25 && allProfiles[i].age >= 25){
+                            PrintProfile(chosenProfile);
+                        }
+                        
+                        if (checkBoxes[a].value === allProfiles[i].gender && inputAge < 25 && allProfiles[i].age < 25){
+                            PrintProfile(chosenProfile);
+                        
+                        }
+                    }           
+                }   
+            }   
         }
     </script>
 	

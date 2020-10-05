@@ -54,11 +54,13 @@
         var a;
         var b;
         var c;
+        
         randomizeQuestions();
         
         
         function randomizeQuestions(){
             
+            /*no question repeats on the buttons*/
             var setList = new Set()
             
             while (setList.size <3){
@@ -68,12 +70,10 @@
             
             [a, b, c] = setList;
             
-            console.log(a)
-            b1.value = chat[a].q;
-            console.log(b)
-            b2.value = chat[b].q;
-            console.log(c)
-            b3.value = chat[c].q;
+            /*Adding value equal to the question*/
+            b1.value = chat[a]["q"];
+            b2.value = chat[b]["q"];
+            b3.value = chat[c]["q"];
             
         }
         

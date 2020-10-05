@@ -19,23 +19,26 @@
 #chat{
     background-color: white;
     width: 90%;
-    
     height: 50%;
 
 }
 
 .l{
     text-align: left;
-    width: 505;
+    width: 50%;
+    padding-left: 10px;
+    color: blue
 }
 
 .r{
     text-align: right;
-    width: 50%;
+    padding-right: 10px;
+    color: green
 }
 
 .chat_button{
     width: 30%;
+    height: auto;
 }
 
 
