@@ -53,7 +53,8 @@ var allProfiles = [
 function PrintProfile(name){
     name.innerHTML +=
         `<div class="profile">
+            <h2>${allProfiles[i].name.toUpperCase()}, ${allProfiles[i].age}år</h2> <br>
             <img src="images/${allProfiles[i].picture}" width="100%">
-            <p>${allProfiles[i].name} <br> ${allProfiles[i].age}, ${allProfiles[i].description}</p>
+             <p>${allProfiles[i].description}</p>
         </div>`
 }
